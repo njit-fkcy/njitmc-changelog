@@ -147,20 +147,28 @@
 
 ### 1.3 公网服务（官网服务器）
 
-> 数据为 2026-11-04 实测（`curl`、HEAD、socket 端口探测、以及从线上 `app.js` 提取 `/api/` 路径后逐个 GET）。
+> 数据为 2026-11-04 经 **SSH（root@120.26.205.237）实测** + 之前的 HTTP/socket 探测。
 
 | 项目 | 实测值 |
 |---|---|
 | 域名解析 | `njitmc.club`、`test.njitmc.club` → `120.26.205.237`（阿里公共 DNS 结果） |
-| 主机指纹 | `nginx/1.24.0 (Ubuntu)`；端口 **22（SSH）、80、443 开**，3306/5432/6379/8080/3000 关（MySQL/PostgreSQL/Redis 未对外） |
+| 主机 | 阿里云 ECS（KVM），Ubuntu 24.04.4 LTS，内核 6.8.0-124；2 vCPU（Intel Xeon Platinum）/ 1.6 GiB 内存 / 无 swap；磁盘 `vda3` 40G（用 5.5G/15%）；内网 `192.168.1.249/24`（VPC，公网 `120.26.205.237` 为 EIP）；uptime 114 天 |
+| 端口 | 对外 22（sshd）、80、443（nginx）；本地 `127.0.0.1:8080`（正式站）、`127.0.0.1:8081`（测试站）；无 MySQL/PostgreSQL/Redis、无 Docker |
 | 首页 | 正式站 200 / 4,697 B；测试站 200 / 4,525 B（`text/html; charset=utf-8`） |
 | 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,533 B、测试 103,249 B |
-| 版本一致性 | 两站线上 `app.js` 均含 `1.5.6` **11 处**，`1.5.3`/`1.5.4`/`1.5.5` 各 **0 处**，`njit-fkcy` 5 处 |
-| 更新清单 | <https://njitmc.club/update/njitmcl.json> 200 / 7,421 B，`version=1.5.6`、`versionCode=444`、`files=9`，每个文件 `urls=5`；源域名 = `github.com`、`gh-proxy.com`、`ghfast.top`、`gh.llkk.cc`、`wg.njit-fkcy.top` |
-| 登录 | `GET /api/mua/oauth/start` → **302** 到 `skin.mualliance.ltd/oauth/authorize?client_id=41&redirect_uri=…%2Fapi%2Fmua%2Foauth%2Fcallback&response_type=code&state=<随机>`；callback 非法 state → **302** `/#sso-error?reason=state` |
-| 服务器数据 | `GET /api/launcher/servers` 200 / 461,493 B：**13 条**记录，**3 条在营**（`changzhu`、`lgg`、`mechanomania-aero-0012`），10 条已归档 |
+| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.5.6`、`versionCode=444`、`files=9`，每文件 `urls=5`（github / gh-proxy / 内网 wg / ghfast / gh.llkk） |
+| 登录 | `GET /api/mua/oauth/start` → **302** `skin.mualliance.ltd/oauth/authorize?client_id=41&redirect_uri=…&response_type=code&state=<随机>`；callback 非法 state → **302** `/#sso-error?reason=state` |
+| 服务器数据 | `GET /api/launcher/servers` 200 / 461,493 B：**13 条**，**3 条在营**（`changzhu`、`lgg`、`mechanomania-aero-0012`） |
 
-> 这台阿里云 Ubuntu 主机「无 SSH 凭据」，本手册只记录可复验的对外表现；其目录、Flask 中控、SMTP 等内部细节见权威档案 **档案-04-社团官网njitmc-club.md**。
+**是怎么实现的（SSH 实测）**——官网是自研 Flask 应用「BlockDimension（方块次元网站）」，正式 / 测试两套并行实例：
+
+- **技术栈**：Flask 3.1.3 + Werkzeug 3.1.8 + waitress 3.0.2 + Jinja2 + `mcstatus`（MC 服务器状态查询）+ dnspython / cryptography。进程 `venv/bin/python app.py --prod`，正式站监听 `127.0.0.1:8080`、测试站 `127.0.0.1:8081`，由 systemd `blockdimension.service` / `blockdimension-test.service` 拉起（`EnvironmentFile=/etc/blockdimension[.test].env`）。
+- **代码位置**：`/opt/blockdimension/`（正式）、`/opt/blockdimension-test/`（测试），历史快照 `blockdimension-release-0233262`、`blockdimension-sqlite-bedecae`。核心 `app.py`（约 33 条路由，见下）+ `storage.py`（数据层）+ `modern_site.py` / `modern_admin.py` + 模块 `activity / avatars / error_reports / feedback_api / polls_api`；前端在 `modern-public-20261008-01/`（`app.js` 等）与 `manage-public-20261008-01/`。
+- **数据（SQLite 多库分离）**：`/var/lib/blockdimension/data/` 下 `website.sqlite3`（主库 733K：服务器/新闻/资源/教程）、`activity.sqlite3`（25.9M 玩家活跃）、`error_reports.sqlite3`（8.6M）、`feedback.sqlite3`、`polls.sqlite3`、`mua_oauth.json`；带多个 `website.sqlite3.bak-*`。
+- **nginx**（`/etc/nginx/sites-available/njitmc`）：`default_server` 拦截非 `njitmc.club` 域名 → `return 444`（防恶意域名爬取）；`njitmc.club` 80→301、443 反代 `127.0.0.1:8080`；`/promo/`→`/var/www/promo`、`/update/`→`/var/www/update`（`no-cache`）；正式站证书 `/root/web/njitmc.club.{pem,key}`，测试站证书 `/etc/letsencrypt/live/test.njitmc.club/`。
+- **部署/版本管理**：`/opt/blockdimension` 是 git 仓库，remote=`https://github.com/njit-fkcy/njitmc-website.git`（私有）；但服务器有**大量未提交改动**（`app.py`、`app.js`、`manage.js` 等 M 态，`error_reports.py` / `polls_api.py` / `polls_store.py` 未跟踪）——**服务器是运行权威，GitHub 副本滞后**。部署走 `/opt/deploy.sh test|prod`（git fetch + `--ff-only` pull + 重启）。注：`njitmc-website` 仍是官网 `docs/` 运维文档的 GitHub 落点。
+- **阿里云组件**：`aliyun.service`（云助手）、`cloudmonitor`（argusagent 云监控）、`AliYunDun`（云盾安骑士）；`ufw` inactive、iptables 默认 ACCEPT（端口管控在阿里云安全组）。
+- **凭据位置**：SSH 私钥 `E:\Users\1\Desktop\密钥\njitmc.club\laptop.pem`（登录用户 root）；`.git-credentials`、`.totp_key`、`/etc/blockdimension.env` 含敏感值，**均只记位置不记明文**。
 
 线上接口一览（均为 GET，实测状态码）：
 
@@ -184,7 +192,7 @@
 
 > 这是「内容 → 位置」速查表。改配置、查数据、翻日志、找备份，先看这张表。
 
-| 想知道 / 要改 | 去内网服务器哪里 | 说明 |
+| 想知道 / 要改 | 去服务器哪里（内网 wg / 公网官网） | 说明 |
 |---|---|---|
 | WireGuard 所有 peer、谁连了组网 | `/etc/wireguard/wg0.conf` | 每个 peer 上方的注释是归属人/客户端名 |
 | WireGuard 服务端密钥 | `/etc/wireguard/server_{private,public}.key` | 私钥还硬编码在 `server.js` 顶部常量 |
@@ -209,7 +217,14 @@
 | 门户/资源/整站历史备份 | `/root/website_backup_.tar.gz`（19G）、`/root/netbak/`、`wg0.conf*`、`server.js.bak*` | 改动前先看有无现成备份 |
 | 系统盘/分区 | `lsblk -f`、`df -h` | sda3 228G（22%） |
 | nginx 日志 | `/var/log/nginx/` | |
-| SSH 登录凭据 | 本机 `发布工具/config.json`（`wgHost/wgUser/wgPassword`） | **不写入本文档** |
+| SSH 登录凭据 | 内网：本机 `发布工具/config.json`（`wgHost/wgUser/wgPassword`）；公网：`E:\Users\1\Desktop\密钥\njitmc.club\laptop.pem`（root） | **不写入本文档** |
+| 官网后端逻辑/接口（公网） | `/opt/blockdimension/app.py`（正式）、`/opt/blockdimension-test/app.py`（测试） | Flask，约 33 条路由 |
+| 官网数据（服务器/新闻/资源/教程） | `/var/lib/blockdimension/data/website.sqlite3` | 主库 733K；另有 activity / error_reports / feedback / polls 各库 |
+| 官网前端 JS/CSS | `/opt/blockdimension/modern-public-20261008-01/`（`app.js` 等） | 管理端 `manage-public-20261008-01/` |
+| 官网 nginx 反代 | `/etc/nginx/sites-available/{njitmc,njitmc-test}` | `default_server` 444 防爬；`/promo` `/update` 静态 |
+| 启动器更新清单（公网现役） | `/var/www/update/njitmcl.json` + `files/` | `1.5.6/444`；`/update/` 静态 `no-cache` |
+| 官网正式站证书 | `/root/web/njitmc.club.{pem,key}` | 测试站 `/etc/letsencrypt/live/test.njitmc.club/` |
+| 官网部署 | `/opt/deploy.sh test\|prod` | git fetch + `--ff-only` pull + systemctl restart |
 
 ---
 
