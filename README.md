@@ -12,60 +12,88 @@
 
 ### 1.1 组织仓库总览（全量 8 个）
 
-组织：<https://github.com/njit-fkcy>（2026-10-29 由个人账号升级为组织）。
+组织：<https://github.com/njit-fkcy>（2026-07-12 创建，2026-10-29 起承载发布仓库；公开 6 个、私有 2 个）。
+
+> 下表统计时间为 **2026-11-04**，数据来自 `GET /orgs/njit-fkcy/repos?type=all` 与逐仓的 `releases`、`tags`。
 
 | 仓库 | 可见性 | 作用 | 最新版本 / 统计 | 最近推送 | 维护时机 |
 |---|---|---|---|---|---|
-| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明 | 24 个 Release，最新 `v1.5.6`；tag 25 个 | 2026-11-04 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
-| [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release，最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
-| [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-03 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release，1 个 tag | 2026-11-02 | 不再更新 |
-| [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：`latest` Release 固定 3 资产 —— `njitmcl-publisher.py`（单文件）、`publisher.json`（自更新清单）、`config.example.json` | 1 个 Release（`latest`），最新 tag `latest` | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
-| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册 | — | 2026-11-04 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
-| [njitmc-website](https://github.com/njit-fkcy/njitmc-website) | 私有 | **官网源码**（Flask 中控 + 前端 `app.js`），同时作为 `docs/` 运维文档的 GitHub 副本 | 4 个 Release，最新 `v0.1.0`；tag 5 个 | 2026-11-02 | 官网功能改动；文档同步 |
-| [njitmc-fkcy](https://github.com/njit-fkcy/njitmc-fkcy) | 公开 | **组织主页仓库**：社团介绍与组织级说明 | 1 个 Release，`v1.0.0` | 2026-08-13 | 社团介绍变更时 |
-| `archive` | 私有 | 社团档案备份（当前为空仓库） | 0 个 Release | 2026-11-02 | 极少动 |
+| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 24 个 Release / 238 个资产 / 25 个 tag（含 `v1.5.6-source`）；最新 `v1.5.6`（id 430622853，2026-11-01 14:03） | 2026-11-04 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
+| [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
+| [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-02 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release / 1 个 tag / 约 12.8 MB | 2026-11-02 | 不再更新 |
+| [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
+| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md`（12,230 B）+ `changes/`（7 份） | 0 个 Release / 0 个 tag | 2026-11-04 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
+| [njitmc-website](https://github.com/njit-fkcy/njitmc-website) | 私有 | **官网源码**（Flask 中控 + 前端 `app.js`），同时作为 `docs/` 运维文档的 GitHub 副本 | 4 个 Release / 13 个资产 / 5 个 tag；最新 `v0.1.0` | 2026-11-04 | 官网功能改动；文档同步 |
+| [njitmc-fkcy](https://github.com/njit-fkcy/njitmc-fkcy) | 公开 | **组织主页仓库**：社团介绍与组织级说明 | 1 个 Release / 1 个资产 / 1 个 tag，`v1.0.0` | 2026-08-13 | 社团介绍变更时 |
+| `archive` | 私有 | 社团档案备份（当前为空仓库） | 0 个 Release / 0 个 tag | 2026-11-02 | 极少动 |
 
 **下载入口**：官网 <https://njitmc.club>；更新清单 <https://njitmc.club/update/njitmcl.json>；整合包与存档走 `PCL-NJITMCL-Modpacks`。
 
+
 ### 1.2 内网服务器（WireGuard 组网）
 
-| 项目 | 值 |
+> 数据为 2026-11-04 经 SSH 只读实测（`wg show`、`ss -lunp`、`ls`、`du -sh`、`df -h`、`cat /etc/nginx/sites-enabled/wg-portal`）。
+
+| 项目 | 实测值 |
 |---|---|
-| 域名 | `wg.njit-fkcy.top`（80 → 301 → 443） |
-| 组网内地址 | `172.21.17.188` |
-| 系统 | Debian GNU/Linux 13 (trixie)，内核 6.12.94+deb13-amd64 |
-| WireGuard | 接口 `wg0`，UDP `51820`；成员节点在 `10.10.x.x` / `10.11.x.x` 段 |
-| nginx | 站点配置 `/etc/nginx/sites-enabled/wg-portal`；证书 `/etc/nginx/ssl/wg.njit-fkcy.top.{crt,key}`，acme.sh 每日 03:17 续期 |
-| 静态分发 | `location ^~ /modpacks/` → `alias /var/www/modpacks/`，带 `Accept-Ranges`（支持断点续传），`client_max_body_size 550M` |
-| 门户 | 其余路径反代 `127.0.0.1:3001`（`/opt/website/网站/server.js`，静态页 `index.html` / `auth.html`） |
+| 域名 / 地址 | `wg.njit-fkcy.top`；公共 DNS（阿里）解析为 `172.21.17.188`（私网地址，只有接入组网的设备可达） |
+| 系统 | Debian GNU/Linux 13 (trixie)，内核 `6.12.94+deb13-amd64`，4 核 / 3.7 GiB 内存 |
+| WireGuard | 接口 `wg0`，UDP `51820`；**115 个 peer**，地址分布在 `10.10.x.x`～`10.13.x.x`（每个 `/32`）；采集时仅 2 个 peer 有近期握手 |
+| nginx | 唯一站点配置 `/etc/nginx/sites-enabled/wg-portal`：80 端口 301 跳 443；证书 `/etc/nginx/ssl/wg.njit-fkcy.top.{crt,key}`（2026-10-21 签发，acme.sh 每日 03:17 续期，下次 2026-12-20） |
+| 静态分发 | `location ^~ /modpacks/` → `alias /var/www/modpacks/`，`Accept-Ranges: bytes`（断点续传），`client_max_body_size 550M` |
+| 门户 | 其余路径反代 `127.0.0.1:3001`（`node /opt/website/网站/server.js`，监听 `0.0.0.0:3001`） |
 | 磁盘 | 根分区 228G，已用 50G（23%） |
 
-目录职责：
+目录职责（容量为实测）：
 
 | 路径 | 内容 | 现状 |
 |---|---|---|
-| `/var/www/modpacks/` | 整合包与存档镜像根目录 | 11G |
-| `/var/www/modpacks/<服务器ID>/` | 该服务器的 `.mrpack` 与 `saves/` 存档（如 `zshh/zshh-1.0.0.mrpack`） | 12 个服务器：`changzhu`、`cjzd`、`hardcore-tech`、`hello-xzc`、`hgjh`、`lgg`、`mechanomania-aero-0012`、`tfcr2`、`thefool`、`vanilla-age`、`wxcs`、`zshh` |
-| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：9 个运行文件 + 完整 zip | 从 `v1.0.3` 到 `v1.5.6`，共 23 个版本，合计 540M |
-| `/var/www/modpacks/_launcher/_source/v<版本>/` | 启动器源码 `PCL-NJITMCL-Source-<版本>.tar.gz` + `SHA256.txt` | 目前只有 `v1.5.6`（13M） |
-| `/opt/website/网站/docs/` | 社团文档副本（提交侧，不参与网站运行） | 8 份变更日志 + OAuth 接入方案 |
-| `/opt/website/{公共资源,私人资源,资源,用户数据,客户端配置}` | 门户资源目录 | 运行中 |
+| `/var/www/modpacks/` | 整合包与存档镜像根目录 | **11G** |
+| `/var/www/modpacks/<服务器ID>/` | 该服务器的 `.mrpack` 与 `saves/` 存档 | **12 个目录**：`changzhu` 1.3G、`cjzd` 2.1G、`hello-xzc` 2.6G、`wxcs` 1.8G、`zshh` 853M、`thefool` 707M、`tfcr2` 467M、`vanilla-age` 352M、`hgjh` 91M、`lgg` 65M、`mechanomania-aero-0012` 5.8M、`hardcore-tech` 3.0M |
+| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：**每版 10 个条目**（9 个运行文件 + 完整 zip） | **23 个版本**（`v1.0.3`、`v1.1.0`~`v1.1.2`、`v1.2.0`~`v1.2.3`、`v1.3.0`、`v1.4.0`~`v1.4.6`、`v1.5.0`~`v1.5.6`），合计 **540M** |
+| `/var/www/modpacks/_launcher/_source/v<版本>/` | `PCL-NJITMCL-Source-<版本>.tar.gz` + `SHA256.txt` | 仅 `v1.5.6`：tar.gz 13,325,094 B、`SHA256.txt` 98 B、内容 `c3ad5f2c…ac3e` |
+| `/opt/website/网站/docs/` | 社团文档副本（提交侧，不参与网站运行） | 84K / 10 个条目：7 份日志（10-29～11-04）+ 1 个 `.bak` + OAuth 接入方案 + 本手册 |
+| `/opt/website/` | 门户站点与资源（`公共资源`、`私人资源`、`资源`、`用户数据`、`客户端配置`、`网站`） | 18G（其中 `网站/` 19M） |
 
 - 上传方式：发布工具（`paramiko`，连接参数在 `发布工具/config.json`，**凭据不写入文档**），上传后文件权限 644。
-- 校验方式：`curl -r 0-1023 <url>` 应返回 `206`；GitHub 直链返回 `302`。
+- 校验方式：`curl -r 0-1023 <url>` 返回 `206`；HEAD 返回 `200` 且 `Content-Length` 与本地一致（例：`_launcher/v1.5.6/PCL-NJITMCL.exe` = 6,086,144 B，`zshh-1.0.0.mrpack` = 167,046,706 B）。
+- 注意：镜像目录数是 12，但中控 `servers` 有 **13 条**记录（3 条在营、10 条已归档；`zhumidamaoxian` 只有记录、无镜像目录），两者不要混为一谈。
 - 注意：从本机 `git clone/push github.com:443` 常被校园网出口阻断，改走 GitHub API；`api.github.com` 与 `uploads.github.com` 正常。
+
 
 ### 1.3 公网服务
 
-| 项目 | 值 |
-|---|---|
-| 正式站 | <https://njitmc.club>（中控 `blockdimension`，源码 `/opt/blockdimension/`） |
-| 测试站 | <https://test.njitmc.club>（`/opt/blockdimension-test/`） |
-| 更新清单 | <https://njitmc.club/update/njitmcl.json>（9 个文件 × 5 个下载源） |
-| 主机 | 阿里云 `120.26.205.237` |
-| 登录 | MUA 皮肤站 OAuth，回调 `/api/mua/oauth/callback` |
+> 数据为 2026-11-04 实测（`curl`、HEAD、以及从线上 `app.js` 提取 `/api/` 路径后逐个 GET）。
 
-公网主机的中控数据、SMTP、服务重启等细节见档案-04（`档案-04-社团官网njitmc-club.md`）。
+| 项目 | 实测值 |
+|---|---|
+| 域名解析 | `njitmc.club`、`test.njitmc.club` → `120.26.205.237`（阿里公共 DNS 结果） |
+| 首页 | 正式站 200 / 4,697 B；测试站 200 / 4,525 B（`text/html; charset=utf-8`） |
+| 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,533 B、测试 103,249 B |
+| 版本一致性 | 两站线上 `app.js` 均含 `1.5.6` **11 处**，`1.5.3`/`1.5.4`/`1.5.5` 各 **0 处**，`njit-fkcy` 5 处 |
+| 更新清单 | <https://njitmc.club/update/njitmcl.json> 200 / 7,421 B，`version=1.5.6`、`versionCode=444`、`files=9`，每个文件 `urls=5`；源域名 = `github.com`、`gh-proxy.com`、`ghfast.top`、`gh.llkk.cc`、`wg.njit-fkcy.top` |
+| 登录 | `GET /api/mua/oauth/start` → **302** 到 `https://skin.mualliance.ltd/oauth/authorize?client_id=41&redirect_uri=https%3A%2F%2Fnjitmc.club%2Fapi%2Fmua%2Foauth%2Fcallback&response_type=code&state=<随机>`；`/api/mua/oauth/callback` 在 state 缺失或非法时 **302** 到 `/#sso-error?reason=state` |
+| 服务器数据 | `GET /api/launcher/servers` 200 / 461,493 B：**13 条**记录，**3 条在营**（`changzhu`、`lgg`、`mechanomania-aero-0012`），10 条已归档 |
+
+线上接口一览（均为 GET，实测状态码）：
+
+| 接口 | 正式站 | 测试站 | 说明 |
+|---|---|---|---|
+| `/api/site` | 200 / 544,457 B | 200 / 74,266 B | 全站聚合数据（最大的一个） |
+| `/api/servers` | 200 / 463,505 B | 200 / 8,891 B | 服务器列表（公开版） |
+| `/api/servers/check` | 200 | 200 | 触发/读取在线状态检查 |
+| `/api/launcher/servers` | 200 / 461,493 B | — | 启动器专用服务器列表 |
+| `/api/news` | 200 / 76,666 B | 200 / 62,061 B | 新闻 |
+| `/api/server-activity` | 200 / 177,697 B | 200 / 176,161 B | 玩家活跃数据 |
+| `/api/polls` | 200 | 未部署 | 投票 |
+| `/api/tutorials` | 200 / 3,563 B | 200 / 2,465 B | 教程 |
+| `/api/feedback/session` | 200 | 200 | 反馈会话 |
+| `/api/mua/session` | 200 / 38 B | 200 / 38 B | 当前登录态（未登录返回空对象） |
+| `/api/resources` | 401 | 401 | 需登录 |
+| `/api/feedback`、`/api/mua/logout` | 405 | 405 / 未部署 | 只接受 POST |
+
+公网主机的目录、中控服务、SMTP 等细节见档案-04（`档案-04-社团官网njitmc-club.md`），本手册只记录可复验的对外表现。
+
 
 ---
 
@@ -160,7 +188,25 @@ njitmc-changelog/
 
 - 内网 wg 服务器：换 IP、改 nginx 站点、加/停某个服务器目录、调整磁盘或 WireGuard 端口 —— 更新 §1.2。
 - 公网服务器：换域名、改中控路径、改更新清单地址 —— 更新 §1.3。
-- 复核方式（每次发版或大改后）：`curl -r 0-1023` 内网文件应 206、GitHub 直链应 302、`/update/njitmcl.json` 应 200 且 `files=9`、每个文件 `urls=5`。
+- 本文件里的数字都带采集日期；改动后重跑下面这组命令，按新结果改表。
+
+```bash
+# 组织与仓库（需要 token）
+curl -s -H "Authorization: Bearer $TOKEN" https://api.github.com/orgs/njit-fkcy/repos?per_page=100&type=all
+curl -s -H "Authorization: Bearer $TOKEN" https://api.github.com/repos/njit-fkcy/PCL-NJITMCL/releases?per_page=100
+
+# 更新清单
+curl -s https://njitmc.club/update/njitmcl.json          # 期望 version/versionCode/files=9/urls=5
+curl -s https://njitmc.club/app.js | grep -o '1\.5\.[0-9]' | sort | uniq -c
+
+# 五源可达性（任一文件）
+curl -o /dev/null -w '%{http_code}\n' -r 0-1023 <GitHub 直链>   # 302
+curl -o /dev/null -w '%{http_code}\n' -r 0-1023 <中转/内网链接>  # 206
+
+# 内网服务器（组网内）
+ssh root@172.21.17.188 'wg show wg0 | grep -c "^peer:"; du -sh /var/www/modpacks /var/www/modpacks/_launcher; ls -1 /var/www/modpacks/_launcher | grep -vc _source'
+```
+
 
 ---
 
@@ -172,3 +218,5 @@ njitmc-changelog/
 | 仓库可见性 | 公开仓库，任何人可查看；写入权限仅组织成员。记录里不含凭据，内网 IP 与服务器路径属运维信息 |
 | 记录和档案有什么区别？ | 本仓库是**按日期的过程流水**，适合查「某天怎么改的」；社团档案是**按系统的现状说明**，适合查「现在是怎样」 |
 | 找不到某次改动 | 先看 §四 索引，再在 `changes/` 里全文搜索关键词（版本号、文件名、服务器名） |
+| 本文件的数字会不会过期？ | 会。每张表都标了采集日期与采集方式；改动后按 §五「服务器/基础设施变化时」的命令重跑并更新 |
+| GitHub 仓库描述与最新版本不一致 | 已知：`PCL-NJITMCL` 的仓库描述仍停留在「v1.0.3 ~ v1.5.3」。判断最新版请以 Release / tag / 更新清单为准，描述只是写仓库时填的一句话 |
