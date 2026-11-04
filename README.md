@@ -10,22 +10,21 @@
 
 ## 一、组织与基础设施
 
-### 1.1 组织仓库总览（全量 8 个）
+### 1.1 组织仓库总览（全量 6 个）
 
-组织：<https://github.com/njit-fkcy>（2026-07-12 创建，2026-10-29 起承载发布仓库；公开 6 个、私有 2 个）。
+组织：<https://github.com/njit-fkcy>（2026-07-12 创建，2026-10-29 起承载发布仓库；公开 5 个、私有 1 个）。
 
 > 下表统计时间为 **2026-11-04**，数据来自 `GET /orgs/njit-fkcy/repos?type=all` 与逐仓的 `releases`、`tags`。
+> 同日清理 3 个无用仓库（由 owner xwan5840 手动删除）：`archive`（空）、`demo-repository`（GitHub 教程自动生成）、`PCL-NJITMCL-Source`（源码已并入 `PCL-NJITMCL/source/`）。
 
 | 仓库 | 可见性 | 作用 | 最新版本 / 统计 | 最近推送 | 维护时机 |
 |---|---|---|---|---|---|
 | [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 24 个 Release / 238 个资产 / 25 个 tag（含 `v1.5.6-source`）；最新 `v1.5.6`（id 430622853，2026-11-01 14:03） | 2026-11-04 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
 | [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
-| [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-02 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release / 1 个 tag / 约 12.8 MB | 2026-11-02 | 不再更新 |
 | [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
 | [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（8 份） | 0 个 Release / 0 个 tag | 2026-11-04 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
 | [njitmc-website](https://github.com/njit-fkcy/njitmc-website) | 私有 | **官网源码**（Flask 中控 + 前端 `app.js`），同时作为 `docs/` 运维文档的 GitHub 副本 | 4 个 Release / 13 个资产 / 5 个 tag；最新 `v0.1.0` | 2026-11-04 | 官网功能改动；文档同步 |
 | [njitmc-fkcy](https://github.com/njit-fkcy/njitmc-fkcy) | 公开 | **组织主页仓库**：社团介绍与组织级说明 | 1 个 Release / 1 个资产 / 1 个 tag，`v1.0.0` | 2026-08-13 | 社团介绍变更时 |
-| `archive` | 私有 | 社团档案备份（当前为空仓库） | 0 个 Release / 0 个 tag | 2026-11-02 | 极少动 |
 
 **下载入口**：官网 <https://njitmc.club>；更新清单 <https://njitmc.club/update/njitmcl.json>；整合包与存档走 `PCL-NJITMCL-Modpacks`。
 
@@ -166,7 +165,7 @@
 - **代码位置**：`/opt/blockdimension/`（正式）、`/opt/blockdimension-test/`（测试），历史快照 `blockdimension-release-0233262`、`blockdimension-sqlite-bedecae`。核心 `app.py`（约 33 条路由，见下）+ `storage.py`（数据层）+ `modern_site.py` / `modern_admin.py` + 模块 `activity / avatars / error_reports / feedback_api / polls_api`；前端在 `modern-public-20261008-01/`（`app.js` 等）与 `manage-public-20261008-01/`。
 - **数据（SQLite 多库分离）**：`/var/lib/blockdimension/data/` 下 `website.sqlite3`（主库 733K：服务器/新闻/资源/教程）、`activity.sqlite3`（25.9M 玩家活跃）、`error_reports.sqlite3`（8.6M）、`feedback.sqlite3`、`polls.sqlite3`、`mua_oauth.json`；带多个 `website.sqlite3.bak-*`。
 - **nginx**（`/etc/nginx/sites-available/njitmc`）：`default_server` 拦截非 `njitmc.club` 域名 → `return 444`（防恶意域名爬取）；`njitmc.club` 80→301、443 反代 `127.0.0.1:8080`；`/promo/`→`/var/www/promo`、`/update/`→`/var/www/update`（`no-cache`）；正式站证书 `/root/web/njitmc.club.{pem,key}`，测试站证书 `/etc/letsencrypt/live/test.njitmc.club/`。
-- **部署/版本管理**：`/opt/blockdimension` 是 git 仓库，remote=`https://github.com/njit-fkcy/njitmc-website.git`（私有）；但服务器有**大量未提交改动**（`app.py`、`app.js`、`manage.js` 等 M 态，`error_reports.py` / `polls_api.py` / `polls_store.py` 未跟踪）——**服务器是运行权威，GitHub 副本滞后**。部署走 `/opt/deploy.sh test|prod`（git fetch + `--ff-only` pull + 重启）。注：`njitmc-website` 仍是官网 `docs/` 运维文档的 GitHub 落点。
+- **部署/版本管理**：`/opt/blockdimension` 是 git 仓库，remote=`https://github.com/njit-fkcy/njitmc-website.git`（私有）。2026-11-04 已把服务器运行代码同步到 GitHub：服务器本地完成 git 提交（代码提交 `6349440` + 合并提交 `d8e50b7`，含 33 个 docs 同步历史），但 `git push` 直连 `github.com:443` 被机房网络阻断（`fetch` 通、`push` 写连接不通），改走 **GitHub Git Data API** 提交（commit `ef2172d`，当前 `main`；10 个运行文件：`app.py`、`error_reports.py`、`polls_api.py`、`polls_store.py` + 管理页/现代页 6 个前端文件）。**服务器仍是运行权威**。部署走 `/opt/deploy.sh test|prod`（git fetch + `--ff-only` pull + 重启）。注：`njitmc-website` 仍是官网 `docs/` 运维文档的 GitHub 落点。
 - **阿里云组件**：`aliyun.service`（云助手）、`cloudmonitor`（argusagent 云监控）、`AliYunDun`（云盾安骑士）；`ufw` inactive、iptables 默认 ACCEPT（端口管控在阿里云安全组）。
 - **凭据位置**：SSH 私钥 `E:\Users\1\Desktop\密钥\njitmc.club\laptop.pem`（登录用户 root）；`.git-credentials`、`.totp_key`、`/etc/blockdimension.env` 含敏感值，**均只记位置不记明文**。
 
