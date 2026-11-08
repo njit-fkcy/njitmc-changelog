@@ -20,7 +20,7 @@
 
 | 仓库 | 可见性 | 作用 | 最新版本 / 统计 | 最近推送 | 维护时机 |
 |---|---|---|---|---|---|
-| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 24 个 Release / 238 个资产 / 25 个 tag（含 `v1.5.6-source`）；最新 `v1.5.6`（id 430622853，2026-11-01 14:03） | 2026-11-04 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
+| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 25 个 Release / 248 个资产 / 26 个 tag（含 `v1.5.9-source`）；最新 `v1.5.9`（id 437986652，2026-11-08 10:31） | 2026-11-08 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
 | [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
 | [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
 | [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（8 份） | 0 个 Release / 0 个 tag | 2026-11-04 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
@@ -154,8 +154,8 @@
 | 主机 | 阿里云 ECS（KVM），Ubuntu 24.04.4 LTS，内核 6.8.0-124；2 vCPU（Intel Xeon Platinum）/ 1.6 GiB 内存 / 无 swap；磁盘 `vda3` 40G（用 5.5G/15%）；内网 `192.168.1.249/24`（VPC，公网 `120.26.205.237` 为 EIP）；uptime 114 天 |
 | 端口 | 对外 22（sshd）、80、443（nginx）；本地 `127.0.0.1:8080`（正式站）、`127.0.0.1:8081`（测试站）；无 MySQL/PostgreSQL/Redis、无 Docker |
 | 首页 | 正式站 200 / 4,697 B；测试站 200 / 4,525 B（`text/html; charset=utf-8`） |
-| 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,533 B、测试 103,249 B |
-| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.5.6`、`versionCode=444`、`files=9`，每文件 `urls=5`（github / gh-proxy / 内网 wg / ghfast / gh.llkk） |
+| 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,503 B、测试 103,219 B |
+| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.5.9`、`versionCode=447`、`files=9`，每文件 `urls=5`（github / gh-proxy / 内网 wg / ghfast / gh.llkk） |
 | 登录 | `GET /api/mua/oauth/start` → **302** `skin.mualliance.ltd/oauth/authorize?client_id=41&redirect_uri=…&response_type=code&state=<随机>`；callback 非法 state → **302** `/#sso-error?reason=state` |
 | 服务器数据 | `GET /api/launcher/servers` 200 / 461,493 B：**13 条**，**3 条在营**（`changzhu`、`lgg`、`mechanomania-aero-0012`） |
 
