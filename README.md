@@ -18,11 +18,11 @@
 
 | 仓库 | 可见性 | 作用 | 最新版本 / 统计 | 最近推送 | 维护时机 |
 |---|---|---|---|---|---|
-| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 28 个 Release / 278 个资产 / 32 个 tag（含 `v1.6.0-source`）；最新 `v1.6.0`（id 438820814，2026-11-09 15:00） | 2026-11-09 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
+| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 29 个 Release / 288 个资产 / 36 个 tag（含 `v1.6.1-source`）；最新 `v1.6.1`（id 438918583，2026-11-09 17:09） | 2026-11-09 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
 | [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
 | [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-02 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release / 1 个 tag / 约 12.8 MB | 2026-11-02 | 不再更新 |
 | [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
-| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（9 份） | 0 个 Release / 0 个 tag | 2026-11-09 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
+| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（10 份） | 0 个 Release / 0 个 tag | 2026-11-09 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
 | [njitmc-website](https://github.com/njit-fkcy/njitmc-website) | 私有 | **官网源码**（Flask 中控 + 前端 `app.js`），同时作为 `docs/` 运维文档的 GitHub 副本 | 4 个 Release / 13 个资产 / 5 个 tag；最新 `v0.1.0` | 2026-11-04 | 官网功能改动；文档同步 |
 | [njitmc-fkcy](https://github.com/njit-fkcy/njitmc-fkcy) | 公开 | **组织主页仓库**：社团介绍与组织级说明 | 1 个 Release / 1 个资产 / 1 个 tag，`v1.0.0` | 2026-08-13 | 社团介绍变更时 |
 | `archive` | 私有 | 社团档案备份（当前为空仓库） | 0 个 Release / 0 个 tag | 2026-11-02 | 极少动 |
@@ -289,6 +289,7 @@ njitmc-changelog/
 | 2026-11-08 | 启动器 | 发布 **1.5.9 / 447**：MUA 登录地址固定（保留 LittleSkin 等第三方登录）；修复 6 项登录 / 组网缺陷（换服缓存、无效 validate、组网账密覆盖、错误提示、显示名、空引用） | [changes/2026-11-08.md](changes/2026-11-08.md) |
 | 2026-11-09 | 官网 / 社团生活 | 新增「社团生活」板块：活动报名（信息模板、双坐标表头、签到接口、信誉与自动拉黑、xlsx 导出）、投票迁入、个人中心（游玩时长 / 活动记录 / MC 角色绑定）；管理端合并为「活动报名 / 投票管理」两个标签 | [changes/2026-11-09.md](changes/2026-11-09.md) |
 | 2026-11-09 | 官网 / 启动器 | 统一账号：网站支持正版账号登录（启动器转交 accessToken），账号可同时绑定 MUA 与正版角色并合并游玩时长；启动器恢复 `njitmcl://` 唤起与底部进度条，修复 MUA 登录跳转；活动支持取消报名，信息模板除 MUA 账号外全部必填；**发布 1.6.0 / 448**（Release 10 资产、清单上线、内网镜像与源码快照） | [changes/2026-11-09.md](changes/2026-11-09.md) |
+| 2026-11-09 | 启动器 | **发布 1.6.1 / 449**（纯修复）：更新下载改为源池 + 超时 + 重试，中转站 5xx/超时不再一票否决；给 exe 改过名的安装可正常更新且不多出重复文件；改名后自动补齐同名 `.config`。清单源池剔除两个死源、换入 `ghproxy.net`；四源实测 206。详见 §十四 | [changes/2026-11-09.md](changes/2026-11-09.md) |
 
 **注意**：2026-10-28 及更早的改动不在本仓库，见社团权威档案（本机档案目录 `ai对系统的全局改动及权威索引\`，含档案-01 本机、档案-03 内网 wg、档案-04 官网、档案-05 启动器）。
 
