@@ -10,21 +10,22 @@
 
 ## 一、组织与基础设施
 
-### 1.1 组织仓库总览（全量 5 个）
+### 1.1 组织仓库总览（全量 8 个）
 
-组织：<https://github.com/njit-fkcy>（2026-07-12 创建，2026-10-29 起承载发布仓库；公开 4 个、私有 1 个）。
+组织：<https://github.com/njit-fkcy>（2026-07-12 创建，2026-10-29 起承载发布仓库；公开 6 个、私有 2 个）。
 
-> 下表统计时间为 **2026-11-04**，数据来自 `GET /orgs/njit-fkcy/repos?type=all` 与逐仓的 `releases`、`tags`。
-> 同日清理 3 个无用仓库（由 owner xwan5840 手动删除）：`archive`（空）、`demo-repository`（GitHub 教程自动生成）、`PCL-NJITMCL-Source`（源码已并入 `PCL-NJITMCL/source/`）。
-> 同日迁出 1 个仓库：`njitmc-fkcy` 属个人小工具（QMCUnlock），与社团无关，已转移到个人账号 <https://github.com/xwan5840/njitmc-fkcy>（旧地址 301 自动重定向）。
+> 下表统计时间为 **2026-11-09**，数据来自 `GET /orgs/njit-fkcy/repos?type=all` 与逐仓的 `releases`、`tags`。
 
 | 仓库 | 可见性 | 作用 | 最新版本 / 统计 | 最近推送 | 维护时机 |
 |---|---|---|---|---|---|
-| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 25 个 Release / 248 个资产 / 26 个 tag（含 `v1.5.9-source`）；最新 `v1.5.9`（id 437986652，2026-11-08 10:31） | 2026-11-08 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
+| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（10,369 B）与 `source/` | 28 个 Release / 278 个资产 / 32 个 tag（含 `v1.6.0-source`）；最新 `v1.6.0`（id 438820814，2026-11-09 15:00） | 2026-11-09 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
 | [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
+| [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-02 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release / 1 个 tag / 约 12.8 MB | 2026-11-02 | 不再更新 |
 | [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
-| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（8 份） | 0 个 Release / 0 个 tag | 2026-11-04 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
+| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（9 份） | 0 个 Release / 0 个 tag | 2026-11-09 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
 | [njitmc-website](https://github.com/njit-fkcy/njitmc-website) | 私有 | **官网源码**（Flask 中控 + 前端 `app.js`），同时作为 `docs/` 运维文档的 GitHub 副本 | 4 个 Release / 13 个资产 / 5 个 tag；最新 `v0.1.0` | 2026-11-04 | 官网功能改动；文档同步 |
+| [njitmc-fkcy](https://github.com/njit-fkcy/njitmc-fkcy) | 公开 | **组织主页仓库**：社团介绍与组织级说明 | 1 个 Release / 1 个资产 / 1 个 tag，`v1.0.0` | 2026-08-13 | 社团介绍变更时 |
+| `archive` | 私有 | 社团档案备份（当前为空仓库） | 0 个 Release / 0 个 tag | 2026-11-02 | 极少动 |
 
 **下载入口**：官网 <https://njitmc.club>；更新清单 <https://njitmc.club/update/njitmcl.json>；整合包与存档走 `PCL-NJITMCL-Modpacks`。
 
@@ -103,7 +104,7 @@
 
 5. **启动器自更新清单**
    - 内网侧旧清单 `/opt/website/网站/update/njitmcl.json`：`2.99.1.0` / `versionCode 415` / sha256，指向 `wg.njit-fkcy.top/update/PCL-NJITMCL-2.99.1.0.exe`（6,020,608 B）。
-   - 公网侧现役清单 `<https://njitmc.club/update/njitmcl.json>`：`1.5.6` / `444`（见 §1.3）。
+   - 公网侧现役清单 `<https://njitmc.club/update/njitmcl.json>`：`1.6.0` / `448`（见 §1.3）。
 
 6. **ddns-go**——把 WiFi 出口动态 IP 映射成域名
    - 把 `wlan0` 的当前 IP 通过**阿里云 DNS**（alidns）更新到 `wifi.njit-fkcy.top` 的 A 记录；探测频率 `-f 600`（300s）。密钥在 config，凭据只记位置。
@@ -123,8 +124,8 @@
 |---|---|---|
 | `/var/www/modpacks/` | 整合包与存档镜像根目录 | **11G** |
 | `/var/www/modpacks/<服务器ID>/` | 该服务器的 `.mrpack` 与 `saves/` 存档 | **12 个目录**：`changzhu` 1.3G、`cjzd` 2.1G、`hello-xzc` 2.6G、`wxcs` 1.8G、`zshh` 853M、`thefool` 707M、`tfcr2` 467M、`vanilla-age` 352M、`hgjh` 91M、`lgg` 65M、`mechanomania-aero-0012` 5.8M、`hardcore-tech` 3.0M |
-| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：**每版 10 个条目**（9 运行文件 + 完整 zip） | **23 个版本**（`v1.0.3`、`v1.1.0~1.1.2`、`v1.2.0~1.2.3`、`v1.3.0`、`v1.4.0~1.4.6`、`v1.5.0~1.5.6`），合计 **540M** |
-| `/var/www/modpacks/_launcher/_source/v<版本>/` | 源码快照 tar.gz + SHA256 | 仅 `v1.5.6`：tar.gz 13,325,094 B、`SHA256.txt` 98 B |
+| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：**每版 10 个条目**（9 运行文件 + 完整 zip） | **27 个版本**（`v1.0.3`、`v1.1.0~1.1.2`、`v1.2.0~1.2.3`、`v1.3.0`、`v1.4.0~1.4.6`、`v1.5.0~1.5.6`、`v1.5.9`、`v1.6.0`），合计 **635M** |
+| `/var/www/modpacks/_launcher/_source/v<版本>/` | 源码快照 tar.gz + SHA256 | `v1.5.6`：tar.gz 13,325,094 B；`v1.6.0`：tar.gz 13,326,649 B、sha256 `ea5ad4558ab06f48d21714e54dcc45d6665bced91345cd84ea1b61d94ae9a264`、`SHA256.txt` 98 B |
 | `/opt/website/网站/` | 门户站点根（服务端 + 前端 + 文档 + 用户数据 + 更新清单） | 19M |
 | `/opt/website/网站/server.js` | 门户后端主文件（含路由/常量/密钥） | 见上 |
 | `/opt/website/网站/用户数据/` | `users.json`/`pool.json`/`port_forwards.json`/`allowed_ports.json` | 门户运行时数据 |
@@ -154,8 +155,8 @@
 | 主机 | 阿里云 ECS（KVM），Ubuntu 24.04.4 LTS，内核 6.8.0-124；2 vCPU（Intel Xeon Platinum）/ 1.6 GiB 内存 / 无 swap；磁盘 `vda3` 40G（用 5.5G/15%）；内网 `192.168.1.249/24`（VPC，公网 `120.26.205.237` 为 EIP）；uptime 114 天 |
 | 端口 | 对外 22（sshd）、80、443（nginx）；本地 `127.0.0.1:8080`（正式站）、`127.0.0.1:8081`（测试站）；无 MySQL/PostgreSQL/Redis、无 Docker |
 | 首页 | 正式站 200 / 4,697 B；测试站 200 / 4,525 B（`text/html; charset=utf-8`） |
-| 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,503 B、测试 103,219 B |
-| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.5.9`、`versionCode=447`、`files=9`，每文件 `urls=5`（github / gh-proxy / 内网 wg / ghfast / gh.llkk） |
+| 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,533 B、测试 103,249 B |
+| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.6.0`、`versionCode=448`、`files=9`，每文件 `urls=5`（github / gh-proxy / 内网 wg / ghfast / gh.llkk） |
 | 登录 | `GET /api/mua/oauth/start` → **302** `skin.mualliance.ltd/oauth/authorize?client_id=41&redirect_uri=…&response_type=code&state=<随机>`；callback 非法 state → **302** `/#sso-error?reason=state` |
 | 服务器数据 | `GET /api/launcher/servers` 200 / 461,493 B：**13 条**，**3 条在营**（`changzhu`、`lgg`、`mechanomania-aero-0012`） |
 
@@ -165,7 +166,7 @@
 - **代码位置**：`/opt/blockdimension/`（正式）、`/opt/blockdimension-test/`（测试），历史快照 `blockdimension-release-0233262`、`blockdimension-sqlite-bedecae`。核心 `app.py`（约 33 条路由，见下）+ `storage.py`（数据层）+ `modern_site.py` / `modern_admin.py` + 模块 `activity / avatars / error_reports / feedback_api / polls_api`；前端在 `modern-public-20261008-01/`（`app.js` 等）与 `manage-public-20261008-01/`。
 - **数据（SQLite 多库分离）**：`/var/lib/blockdimension/data/` 下 `website.sqlite3`（主库 733K：服务器/新闻/资源/教程）、`activity.sqlite3`（25.9M 玩家活跃）、`error_reports.sqlite3`（8.6M）、`feedback.sqlite3`、`polls.sqlite3`、`mua_oauth.json`；带多个 `website.sqlite3.bak-*`。
 - **nginx**（`/etc/nginx/sites-available/njitmc`）：`default_server` 拦截非 `njitmc.club` 域名 → `return 444`（防恶意域名爬取）；`njitmc.club` 80→301、443 反代 `127.0.0.1:8080`；`/promo/`→`/var/www/promo`、`/update/`→`/var/www/update`（`no-cache`）；正式站证书 `/root/web/njitmc.club.{pem,key}`，测试站证书 `/etc/letsencrypt/live/test.njitmc.club/`。
-- **部署/版本管理**：`/opt/blockdimension` 是 git 仓库，remote=`https://github.com/njit-fkcy/njitmc-website.git`（私有）。2026-11-04 已把服务器运行代码同步到 GitHub：服务器本地完成 git 提交（代码提交 `6349440` + 合并提交 `d8e50b7`，含 33 个 docs 同步历史），但 `git push` 直连 `github.com:443` 被机房网络阻断（`fetch` 通、`push` 写连接不通），改走 **GitHub Git Data API** 提交（commit `ef2172d`，当前 `main`；10 个运行文件：`app.py`、`error_reports.py`、`polls_api.py`、`polls_store.py` + 管理页/现代页 6 个前端文件）。**服务器仍是运行权威**。部署走 `/opt/deploy.sh test|prod`（git fetch + `--ff-only` pull + 重启）。注：`njitmc-website` 仍是官网 `docs/` 运维文档的 GitHub 落点。
+- **部署/版本管理**：`/opt/blockdimension` 是 git 仓库，remote=`https://github.com/njit-fkcy/njitmc-website.git`（私有）；但服务器有**大量未提交改动**（`app.py`、`app.js`、`manage.js` 等 M 态，`error_reports.py` / `polls_api.py` / `polls_store.py` 未跟踪）——**服务器是运行权威，GitHub 副本滞后**。部署走 `/opt/deploy.sh test|prod`（git fetch + `--ff-only` pull + 重启）。注：`njitmc-website` 仍是官网 `docs/` 运维文档的 GitHub 落点。
 - **阿里云组件**：`aliyun.service`（云助手）、`cloudmonitor`（argusagent 云监控）、`AliYunDun`（云盾安骑士）；`ufw` inactive、iptables 默认 ACCEPT（端口管控在阿里云安全组）。
 - **凭据位置**：SSH 私钥 `E:\Users\1\Desktop\密钥\njitmc.club\laptop.pem`（登录用户 root）；`.git-credentials`、`.totp_key`、`/etc/blockdimension.env` 含敏感值，**均只记位置不记明文**。
 
@@ -181,7 +182,8 @@
 | `/api/server-activity` | 200 / 177,697 B | 200 / 176,161 B | 玩家活跃数据 |
 | `/api/polls` | 200 | 200 | 投票 |
 | `/api/club/events` | 200 | 200 | 社团生活活动列表（公开） |
-| `/api/club/profile` | 401 | 401 | 信息模板与个人中心，需 MUA 登录 |
+| `/api/club/profile` | 401 | 401 | 信息模板与个人中心，需登录 |
+| `/api/account` | 401 | 401 | 统一账号（MUA / 正版），需登录 |
 | `/api/tutorials` | 200 / 3,563 B | 200 / 2,465 B | 教程 |
 | `/api/feedback/session` | 200 | 200 | 反馈会话 |
 | `/api/mua/session` | 200 / 38 B | 200 / 38 B | 当前登录态（未登录返回空对象） |
@@ -223,7 +225,7 @@
 | 官网数据（服务器/新闻/资源/教程） | `/var/lib/blockdimension/data/website.sqlite3` | 主库 733K；另有 activity / error_reports / feedback / polls 各库 |
 | 官网前端 JS/CSS | `/opt/blockdimension/modern-public-20261008-01/`（`app.js` 等） | 管理端 `manage-public-20261008-01/` |
 | 官网 nginx 反代 | `/etc/nginx/sites-available/{njitmc,njitmc-test}` | `default_server` 444 防爬；`/promo` `/update` 静态 |
-| 启动器更新清单（公网现役） | `/var/www/update/njitmcl.json` + `files/` | `1.5.6/444`；`/update/` 静态 `no-cache` |
+| 启动器更新清单（公网现役） | `/var/www/update/njitmcl.json` + `files/` | `1.6.0/448`；`/update/` 静态 `no-cache` |
 | 官网正式站证书 | `/root/web/njitmc.club.{pem,key}` | 测试站 `/etc/letsencrypt/live/test.njitmc.club/` |
 | 官网部署 | `/opt/deploy.sh test\|prod` | git fetch + `--ff-only` pull + systemctl restart |
 
@@ -285,6 +287,7 @@ njitmc-changelog/
 | 2026-11-05 | 启动器 / 本机协议残留 | 新增「退出自动断开组网」并发布 **1.5.7 / 445**；随后发布 **1.5.8 / 446**（更新改整包替换、WireGuard 组件统一到 `WireGuard\`）；清理 `ModSiteAuth.vb` 源码引用与 `njitmcl://` 注册表残留 | [changes/2026-11-05.md](changes/2026-11-05.md) |
 | 2026-11-08 | 启动器 | 发布 **1.5.9 / 447**：MUA 登录地址固定（保留 LittleSkin 等第三方登录）；修复 6 项登录 / 组网缺陷（换服缓存、无效 validate、组网账密覆盖、错误提示、显示名、空引用） | [changes/2026-11-08.md](changes/2026-11-08.md) |
 | 2026-11-09 | 官网 / 社团生活 | 新增「社团生活」板块：活动报名（信息模板、双坐标表头、签到接口、信誉与自动拉黑、xlsx 导出）、投票迁入、个人中心（游玩时长 / 活动记录 / MC 角色绑定）；管理端合并为「活动报名 / 投票管理」两个标签 | [changes/2026-11-09.md](changes/2026-11-09.md) |
+| 2026-11-09 | 官网 / 启动器 | 统一账号：网站支持正版账号登录（启动器转交 accessToken），账号可同时绑定 MUA 与正版角色并合并游玩时长；启动器恢复 `njitmcl://` 唤起与底部进度条，修复 MUA 登录跳转；**发布 1.6.0 / 448**（Release 10 资产、清单上线、内网镜像与源码快照） | [changes/2026-11-09.md](changes/2026-11-09.md) |
 
 **注意**：2026-10-28 及更早的改动不在本仓库，见社团权威档案（本机档案目录 `ai对系统的全局改动及权威索引\`，含档案-01 本机、档案-03 内网 wg、档案-04 官网、档案-05 启动器）。
 
