@@ -18,7 +18,7 @@
 
 | 仓库 | 可见性 | 作用 | 最新版本 / 统计 | 最近推送 | 维护时机 |
 |---|---|---|---|---|---|
-| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（12,795 B）与 `source/` | 34 个 Release / 338 个资产 / 46 个 tag（含 `v1.8.2-source`）；最新 `v1.8.2`（id 440477606，2026-11-10） | 2026-11-10 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
+| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（12,843 B）与 `source/` | 35 个 Release / 348 个资产 / 48 个 tag（含 `v1.8.3-source`）；最新 `v1.8.3`（id 440505195，2026-11-10） | 2026-11-10 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
 | [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
 | [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-02 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release / 1 个 tag / 约 12.8 MB | 2026-11-02 | 不再更新 |
 | [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
@@ -156,7 +156,7 @@
 | 端口 | 对外 22（sshd）、80、443（nginx）；本地 `127.0.0.1:8080`（正式站）、`127.0.0.1:8081`（测试站）；无 MySQL/PostgreSQL/Redis、无 Docker |
 | 首页 | 正式站 200 / 4,697 B；测试站 200 / 4,525 B（`text/html; charset=utf-8`） |
 | 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,533 B、测试 103,249 B |
-| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.8.2`、`versionCode=456`、`files=9`，每文件 `urls=4`（github / 内网 wg / gh-proxy / ghproxy.net） |
+| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.8.3`、`versionCode=457`、`files=9`，每文件 `urls=4`（github / 内网 wg / gh-proxy / ghproxy.net） |
 | 登录 | `GET /api/mua/oauth/start` → **302** `skin.mualliance.ltd/oauth/authorize?client_id=41&redirect_uri=…&response_type=code&state=<随机>`；callback 非法 state → **302** `/#sso-error?reason=state` |
 | 服务器数据 | `GET /api/launcher/servers` 200 / 461,493 B：**13 条**，**3 条在营**（`changzhu`、`lgg`、`mechanomania-aero-0012`） |
 
@@ -295,6 +295,7 @@ njitmc-changelog/
 | 2026-11-10 | 启动器 / 插件 | **发布 1.8.0 / 454**：插件市场（下载页「扩展 → 插件市场」）；新建 `njitmcl-plugins` 仓库与 `/api/plugins` 中控；上架示例插件与 GitHub 防污染代理 | [changes/2026-11-10.md](changes/2026-11-10.md) |
 | 2026-11-10 | 启动器 / 插件 | **发布 1.8.1 / 455**（修复）：插件下载改为多源（内网 → GitHub → gh-proxy → ghproxy.net），修复 GitHub 直链超时导致安装卡住；插件包同步内网 `_plugins/`；清单 `urls` 恢复为数组格式；新增「所有 GitHub 变更必须同步内网源」规则 | [changes/2026-11-10.md](changes/2026-11-10.md) |
 | 2026-11-10 | 启动器 | **发布 1.8.2 / 456**（修复）：未登录不再进入 MUA 头像页；退出登录清除 MUA 标记；正版与 MUA 同等待遇（下载整合包/存档、校内组网均按「MUA 已登录或正版有 token」判断） | [changes/2026-11-10.md](changes/2026-11-10.md) |
+| 2026-11-10 | 启动器 | **发布 1.8.3 / 457**（修复）：更新后 wg 组件丢失；完整包改为 `WireGuard\` 子目录，更新器兼容旧包平铺布局，仅在本轮确实写入组件时才清理旧文件。内网镜像 **待补**（发布时组网隧道不可达） | [changes/2026-11-10.md](changes/2026-11-10.md) |
 
 **注意**：2026-10-28 及更早的改动不在本仓库，见社团权威档案（本机档案目录 `ai对系统的全局改动及权威索引\`，含档案-01 本机、档案-03 内网 wg、档案-04 官网、档案-05 启动器）。
 
