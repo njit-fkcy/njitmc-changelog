@@ -124,7 +124,7 @@
 |---|---|---|
 | `/var/www/modpacks/` | 整合包与存档镜像根目录 | **11G** |
 | `/var/www/modpacks/<服务器ID>/` | 该服务器的 `.mrpack` 与 `saves/` 存档 | **12 个目录**：`changzhu` 1.3G、`cjzd` 2.1G、`hello-xzc` 2.6G、`wxcs` 1.8G、`zshh` 853M、`thefool` 707M、`tfcr2` 467M、`vanilla-age` 352M、`hgjh` 91M、`lgg` 65M、`mechanomania-aero-0012` 5.8M、`hardcore-tech` 3.0M |
-| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：**每版 10 个条目**（9 运行文件 + 完整 zip） | **33 个版本**（`v1.0.3`、`v1.1.0~1.1.2`、`v1.2.0~1.2.3`、`v1.3.0`、`v1.4.0~1.4.6`、`v1.5.0~1.5.9`、`v1.6.0`、`v1.6.1`、`v1.6.2`、`v1.7.0`、`v1.8.0`、`v1.8.1`、`v1.8.2`），合计 **798M** |
+| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：**每版 10 个条目**（9 运行文件 + 完整 zip） | **34 个版本**（`v1.0.3`、`v1.1.0~1.1.2`、`v1.2.0~1.2.3`、`v1.3.0`、`v1.4.0~1.4.6`、`v1.5.0~1.5.9`、`v1.6.0`、`v1.6.1`、`v1.6.2`、`v1.7.0`、`v1.8.0`、`v1.8.1`、`v1.8.2`、`v1.8.3`），合计 **821M**（2026-11-11 实测） |
 | `/var/www/modpacks/_launcher/_source/v<版本>/` | 源码快照 tar.gz + SHA256 | `v1.5.6`：tar.gz 13,325,094 B；`v1.6.0`：tar.gz 13,326,649 B、sha256 `ea5ad4558ab06f48d21714e54dcc45d6665bced91345cd84ea1b61d94ae9a264`、`SHA256.txt` 98 B |
 | `/opt/website/网站/` | 门户站点根（服务端 + 前端 + 文档 + 用户数据 + 更新清单） | 19M |
 | `/opt/website/网站/server.js` | 门户后端主文件（含路由/常量/密钥） | 见上 |
@@ -215,7 +215,7 @@
 | 双出口路由/故障转移 | `/usr/local/bin/{update-routes,mua-failover}.sh`；cron `/etc/cron.d/mua-failover` | /32 清单 `/run/ddns-wifi-routes.list`；日志 `/var/log/mua-failover.log` |
 | 防火墙规则 | `/etc/nftables.conf`；快照 `/root/netbak/` | 历史 iptables 备份也在 netbak |
 | 整合包镜像 | `/var/www/modpacks/<服务器ID>/` | 12 个目录 + `saves/` |
-| 启动器版本镜像 | `/var/www/modpacks/_launcher/v<版本>/`、`_source/` | 23 个版本 |
+| 启动器版本镜像 | `/var/www/modpacks/_launcher/v<版本>/`、`_source/` | 34 个版本 |
 | 启动器自更新清单（内网旧版） | `/opt/website/网站/update/njitmcl.json` | 2.99.1.0；现役清单在公网 njitmc.club |
 | 公共资源库 | `/opt/website/公共资源/` | Java/RustDesk/系统镜像/MC 客户端 |
 | 门户/资源/整站历史备份 | `/root/website_backup_.tar.gz`（19G）、`/root/netbak/`、`wg0.conf*`、`server.js.bak*` | 改动前先看有无现成备份 |
@@ -295,7 +295,7 @@ njitmc-changelog/
 | 2026-11-10 | 启动器 / 插件 | **发布 1.8.0 / 454**：插件市场（下载页「扩展 → 插件市场」）；新建 `njitmcl-plugins` 仓库与 `/api/plugins` 中控；上架示例插件与 GitHub 防污染代理 | [changes/2026-11-10.md](changes/2026-11-10.md) |
 | 2026-11-10 | 启动器 / 插件 | **发布 1.8.1 / 455**（修复）：插件下载改为多源（内网 → GitHub → gh-proxy → ghproxy.net），修复 GitHub 直链超时导致安装卡住；插件包同步内网 `_plugins/`；清单 `urls` 恢复为数组格式；新增「所有 GitHub 变更必须同步内网源」规则 | [changes/2026-11-10.md](changes/2026-11-10.md) |
 | 2026-11-10 | 启动器 | **发布 1.8.2 / 456**（修复）：未登录不再进入 MUA 头像页；退出登录清除 MUA 标记；正版与 MUA 同等待遇（下载整合包/存档、校内组网均按「MUA 已登录或正版有 token」判断） | [changes/2026-11-10.md](changes/2026-11-10.md) |
-| 2026-11-10 | 启动器 | **发布 1.8.3 / 457**（修复）：更新后 wg 组件丢失；完整包改为 `WireGuard\` 子目录，更新器兼容旧包平铺布局，仅在本轮确实写入组件时才清理旧文件。内网镜像 **待补**（发布时组网隧道不可达） | [changes/2026-11-10.md](changes/2026-11-10.md) |
+| 2026-11-10 | 启动器 | **发布 1.8.3 / 457**（修复）：更新后 wg 组件丢失；完整包改为 `WireGuard\` 子目录，更新器兼容旧包平铺布局，仅在本轮确实写入组件时才清理旧文件。内网镜像已补传（2026-11-11，`/var/www/modpacks/_launcher/v1.8.3/` 10 文件，逐个 206） | [changes/2026-11-10.md](changes/2026-11-10.md) |
 
 **注意**：2026-10-28 及更早的改动不在本仓库，见社团权威档案（本机档案目录 `ai对系统的全局改动及权威索引\`，含档案-01 本机、档案-03 内网 wg、档案-04 官网、档案-05 启动器）。
 
