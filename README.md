@@ -14,15 +14,15 @@
 
 组织：<https://github.com/njit-fkcy>（2026-07-12 创建，2026-10-29 起承载发布仓库；公开 6 个、私有 2 个）。
 
-> 下表统计时间原为 **2026-11-09**；2026-11-10 已更新启动器相关行（Release / 资产 / tag 数、内网镜像、更新清单），其余数字沿用当日实测。
+> 下表统计时间原为 **2026-11-09**；2026-11-14 已更新启动器相关行（Release / 资产 / tag 数、内网镜像、更新清单），其余数字沿用当日实测。
 
 | 仓库 | 可见性 | 作用 | 最新版本 / 统计 | 最近推送 | 维护时机 |
 |---|---|---|---|---|---|
-| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（每版 10 个资产：9 个运行文件 + 1 个完整 zip）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（12,843 B）与 `source/` | 35 个 Release / 348 个资产 / 48 个 tag（含 `v1.8.3-source`）；最新 `v1.8.3`（id 440505195，2026-11-10） | 2026-11-10 | 发版：建 `v<版本>` Release、上传 10 资产、提交源码快照、打 `v<版本>-source` |
+| [PCL-NJITMCL](https://github.com/njit-fkcy/PCL-NJITMCL) | 公开 | **启动器主仓库**：二进制发布（2.1.x 每版 2 个资产：`PCL-NJITMCL.exe` + 完整 zip；1.x 为 10 个）+ **启动器源码**（`source/`）+ 发版说明。根目录只有 `README.md`（14,841 B）与 `source/` | 43 个 Release / 388 个资产 / 59 个 tag（含 `v2.1.3-source`）；最新 `v2.1.3`（id 445170942，2026-11-14） | 2026-11-14 | 发版：建 `v<版本>` Release、上传 2 资产、提交源码、打 `v<版本>-source`、同步内网与清单 |
 | [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
 | [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-02 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release / 1 个 tag / 约 12.8 MB | 2026-11-02 | 不再更新 |
 | [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
-| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（11 份） | 0 个 Release / 0 个 tag | 2026-11-10 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
+| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（12 份） | 0 个 Release / 0 个 tag | 2026-11-14 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
 | [njitmc-website](https://github.com/njit-fkcy/njitmc-website) | 私有 | **官网源码**（Flask 中控 + 前端 `app.js`），同时作为 `docs/` 运维文档的 GitHub 副本 | 4 个 Release / 13 个资产 / 5 个 tag；最新 `v0.1.0` | 2026-11-04 | 官网功能改动；文档同步 |
 | [njitmc-fkcy](https://github.com/njit-fkcy/njitmc-fkcy) | 公开 | **组织主页仓库**：社团介绍与组织级说明 | 1 个 Release / 1 个资产 / 1 个 tag，`v1.0.0` | 2026-08-13 | 社团介绍变更时 |
 | `archive` | 私有 | 社团档案备份（当前为空仓库） | 0 个 Release / 0 个 tag | 2026-11-02 | 极少动 |
@@ -124,7 +124,7 @@
 |---|---|---|
 | `/var/www/modpacks/` | 整合包与存档镜像根目录 | **11G** |
 | `/var/www/modpacks/<服务器ID>/` | 该服务器的 `.mrpack` 与 `saves/` 存档 | **12 个目录**：`changzhu` 1.3G、`cjzd` 2.1G、`hello-xzc` 2.6G、`wxcs` 1.8G、`zshh` 853M、`thefool` 707M、`tfcr2` 467M、`vanilla-age` 352M、`hgjh` 91M、`lgg` 65M、`mechanomania-aero-0012` 5.8M、`hardcore-tech` 3.0M |
-| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：**每版 10 个条目**（9 运行文件 + 完整 zip） | **34 个版本**（`v1.0.3`、`v1.1.0~1.1.2`、`v1.2.0~1.2.3`、`v1.3.0`、`v1.4.0~1.4.6`、`v1.5.0~1.5.9`、`v1.6.0`、`v1.6.1`、`v1.6.2`、`v1.7.0`、`v1.8.0`、`v1.8.1`、`v1.8.2`、`v1.8.3`），合计 **821M**（2026-11-11 实测） |
+| `/var/www/modpacks/_launcher/v<版本>/` | 启动器镜像：**2.1.x 每版 2 个条目**（exe + 完整 zip），1.x 为 10 个 | **42 个版本**（`v1.0.3` ～ `v2.1.3`），`_launcher/` 合计 **989M**（2026-11-14 实测） |
 | `/var/www/modpacks/_launcher/_source/v<版本>/` | 源码快照 tar.gz + SHA256 | `v1.5.6`：tar.gz 13,325,094 B；`v1.6.0`：tar.gz 13,326,649 B、sha256 `ea5ad4558ab06f48d21714e54dcc45d6665bced91345cd84ea1b61d94ae9a264`、`SHA256.txt` 98 B |
 | `/opt/website/网站/` | 门户站点根（服务端 + 前端 + 文档 + 用户数据 + 更新清单） | 19M |
 | `/opt/website/网站/server.js` | 门户后端主文件（含路由/常量/密钥） | 见上 |
@@ -156,7 +156,7 @@
 | 端口 | 对外 22（sshd）、80、443（nginx）；本地 `127.0.0.1:8080`（正式站）、`127.0.0.1:8081`（测试站）；无 MySQL/PostgreSQL/Redis、无 Docker |
 | 首页 | 正式站 200 / 4,697 B；测试站 200 / 4,525 B（`text/html; charset=utf-8`） |
 | 前端资源 | `data.js` 16,875 B（两站相同）；`app.js` 正式 126,533 B、测试 103,249 B |
-| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=1.8.3`、`versionCode=457`、`files=9`，每文件 `urls=4`（github / 内网 wg / gh-proxy / ghproxy.net） |
+| 更新清单 | <https://njitmc.club/update/njitmcl.json>（即 `/var/www/update/njitmcl.json`）`version=2.1.3`、`versionCode=468`、`files=1`、`force=false`，文件 4 源（github / 内网 wg / gh-proxy / ghproxy.net），另有 `package` 指向完整 zip |
 | 登录 | `GET /api/mua/oauth/start` → **302** `skin.mualliance.ltd/oauth/authorize?client_id=41&redirect_uri=…&response_type=code&state=<随机>`；callback 非法 state → **302** `/#sso-error?reason=state` |
 | 服务器数据 | `GET /api/launcher/servers` 200 / 461,493 B：**13 条**，**3 条在营**（`changzhu`、`lgg`、`mechanomania-aero-0012`） |
 
@@ -299,6 +299,7 @@ njitmc-changelog/
 | 2026-11-13 | 启动器 / 官网 | **审查修复批次（启动器未发布）**：启动器修 `Logout` 残留账号 ID、frpc 列表并发加锁、设备码轮询可取消、空头像地址、统一友好错误提示与防重复提交；官网后端修登录码原子核销、建房端口并发唯一、伪造 XFF 绕过限流、昵称撞索引 409、报名 N+1 与 LIKE 转义、头像来源容错等 9 个文件 | [changes/2026-11-13.md](changes/2026-11-13.md) |
 | 2026-11-13 | 官网 / 启动器 | **活动签到（双端）**：管理端对已截止报名的活动开启签到并填截止时间，6 位签到码现场公开；网站与启动器在报名卡片高亮「正在签到」并提供签到弹窗；后端按登录身份匹配本人报名记录签到（匿名学号接口保留） | [changes/2026-11-13.md](changes/2026-11-13.md) |
 | 2026-11-13 | 官网 / 启动器 | **签到体验与联机修正**：签到弹窗配色、启动页「活动签到」提示卡片、活动记录显示签到时间；修复加入房间延迟显示、成员序号错乱（房主固定第一）；「我的房间」新增好友房间分组 | [changes/2026-11-13.md](changes/2026-11-13.md) |
+| 2026-11-14 | 启动器 / 官网 | **发布 2.1.0 / 464、2.1.1 / 465、2.1.2 / 466、2.1.3 / 468**：安装形态改为单 exe（依赖内嵌并释放到 `PCL\`）、清理 `*.old` 与 `WireGuard\`、官网登录改正版 / MUA 双身份并取消联机设备码、下载链路改签名地址 + 后台配置中转 + 下载实测优选；补 2.1.2 源码 tag 与内网源码包，修复官网 2.1.2 下载链接 404 | [changes/2026-11-14.md](changes/2026-11-14.md) |
 
 **注意**：2026-10-28 及更早的改动不在本仓库，见社团权威档案（本机档案目录 `ai对系统的全局改动及权威索引\`，含档案-01 本机、档案-03 内网 wg、档案-04 官网、档案-05 启动器）。
 
