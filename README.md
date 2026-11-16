@@ -22,7 +22,7 @@
 | [PCL-NJITMCL-Modpacks](https://github.com/njit-fkcy/PCL-NJITMCL-Modpacks) | 公开 | **整合包与存档发布仓库**：每个整合包 / 存档是一个 Release，资产为 `.mrpack` 与分片补丁 | 17 个 Release / 39 个资产 / 17 个 tag；最新 `zshh-1.0.0` | 2026-10-29 | 开新包 / 改包：新建 Release、上传补丁、登记中控 |
 | [PCL-NJITMCL-Source](https://github.com/njit-fkcy/PCL-NJITMCL-Source) | 公开（已归档） | **历史源码仓库**（2026-11-02 建）。源码已并入 `PCL-NJITMCL/source/`，本仓库只读留档 | 0 个 Release / 1 个 tag / 约 12.8 MB | 2026-11-02 | 不再更新 |
 | [njitmcl-tools](https://github.com/njit-fkcy/njitmcl-tools) | 公开 | **发布工具仓库**：根目录 `README.md`（3,039 B）+ `njitmcl-publisher.py`（99,205 B）；`latest` Release 固定 3 资产 —— py 99,205 B、`publisher.json` 356 B、`config.example.json` 384 B | 1 个 Release（`latest`，id 427538843）/ 3 个资产 | 2026-11-04 | 工具改动：递增 `PUBLISHER_VERSION_CODE`、覆盖 `latest` 同名资产 |
-| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（12 份） | 0 个 Release / 0 个 tag | 2026-11-14 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
+| [njitmc-changelog](https://github.com/njit-fkcy/njitmc-changelog) | 公开 | 本仓库：按日期的变更记录 + 组织仓库与服务器手册。根目录 `README.md` + `changes/`（按日期分文件） | 0 个 Release / 0 个 tag | 2026-11-14 | 每次改动追加 `changes/<日期>.md`；仓库或服务器变化时更新本文件 |
 | [njitmc-website](https://github.com/njit-fkcy/njitmc-website) | 私有 | **官网源码**（Flask 中控 + 前端 `app.js`），同时作为 `docs/` 运维文档的 GitHub 副本 | 4 个 Release / 13 个资产 / 5 个 tag；最新 `v0.1.0` | 2026-11-04 | 官网功能改动；文档同步 |
 | [njitmc-fkcy](https://github.com/njit-fkcy/njitmc-fkcy) | 公开 | **组织主页仓库**：社团介绍与组织级说明 | 1 个 Release / 1 个资产 / 1 个 tag，`v1.0.0` | 2026-08-13 | 社团介绍变更时 |
 | `archive` | 私有 | 社团档案备份（当前为空仓库） | 0 个 Release / 0 个 tag | 2026-11-02 | 极少动 |
@@ -229,6 +229,9 @@
 | 启动器更新清单（公网现役） | `/var/www/update/njitmcl.json` + `files/` | `1.6.2/450`；`/update/` 静态 `no-cache` |
 | 官网正式站证书 | `/root/web/njitmc.club.{pem,key}` | 测试站 `/etc/letsencrypt/live/test.njitmc.club/` |
 | 官网部署 | `/opt/deploy.sh test\|prod` | git fetch + `--ff-only` pull + systemctl restart |
+| CDN 文件管理站（file.njitmc.club） | `8.136.4.126`，密码 + TOTP 登录 | 凭据在 `发布/config.json` 的 `cdn` 段，不写本文档 |
+| CDN 对象存储与分发 | OSS Bucket `njitmc`（cn-hangzhou）；公开域名 `https://cdn.njitmc.club` | 对象路径与 `/var/www/modpacks/` 一致：`modpacks/<服务器ID>/…` |
+| 官网资源 CDN 直链 | `/var/lib/blockdimension/data/website.sqlite3` 的 `resources` → `links`（`provider=cdn`） | 后台「资源」下载来源选「社团 CDN」 |
 
 ---
 
@@ -301,6 +304,7 @@ njitmc-changelog/
 | 2026-11-13 | 官网 / 启动器 | **签到体验与联机修正**：签到弹窗配色、启动页「活动签到」提示卡片、活动记录显示签到时间；修复加入房间延迟显示、成员序号错乱（房主固定第一）；「我的房间」新增好友房间分组 | [changes/2026-11-13.md](changes/2026-11-13.md) |
 | 2026-11-14 | 启动器 / 官网 | **发布 2.1.0 / 464、2.1.1 / 465、2.1.2 / 466、2.1.3 / 468**：安装形态改为单 exe（依赖内嵌并释放到 `PCL\`）、清理 `*.old` 与 `WireGuard\`、官网登录改正版 / MUA 双身份并取消联机设备码、下载链路改签名地址 + 后台配置中转 + 下载实测优选；补 2.1.2 源码 tag 与内网源码包，修复官网 2.1.2 下载链接 404 | [changes/2026-11-14.md](changes/2026-11-14.md) |
 | 2026-11-15 | 官网 | **隐私条款与登录勾选**：新增 `#privacy` 条款页，逐项列明账号身份、邮箱与密码摘要、社团档案、活动与游玩、互动内容、设备与日志、Cookie；启动器登录回调与密码登录必须勾选同意，后端记录同意时间与条款版本 `2026-11-15` | [changes/2026-11-15.md](changes/2026-11-15.md) |
+| 2026-11-16 | CDN 分发 / 官网 | **社团 CDN 上线**：启动器 v2.1.4、11 个整合包、5 个存档共 9.28 GB 镜像到 `cdn.njitmc.club`；官网启动器页只保留一个 CDN 下载地址；后台资源下载来源新增「社团 CDN」，13 条资源补 CDN 直链；发布工具接入 CDN 分发（未发布） | [changes/2026-11-16.md](changes/2026-11-16.md) |
 
 **注意**：2026-10-28 及更早的改动不在本仓库，见社团权威档案（本机档案目录 `ai对系统的全局改动及权威索引\`，含档案-01 本机、档案-03 内网 wg、档案-04 官网、档案-05 启动器）。
 
